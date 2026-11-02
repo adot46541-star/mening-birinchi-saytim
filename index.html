@@ -1,11 +1,140 @@
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <title>Mening saytim</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Behruzning shaxsiy portfolio sayti">
+<title>Behruz | Portfolio</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{background:#070b14;color:#f5f8ff;font-family:Arial,sans-serif;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:90%;max-width:1100px;margin:auto}
+header{position:sticky;top:0;background:#090f1bed;border-bottom:1px solid #1c2b40;z-index:10}
+nav{height:75px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:bold;color:#168cff}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{color:#aab8ca;font-size:14px}
+.nav-links a:hover{color:#168cff}
+.hero{min-height:590px;display:flex;align-items:center;background:radial-gradient(ellipse at 80% 40%,#123b652c,transparent 60%)}
+.tag{display:inline-block;padding:7px 15px;border:1px solid #1765a5;border-radius:30px;color:#60b5ff;margin-bottom:25px}
+h1{font-size:clamp(45px,8vw,76px);line-height:1.1;margin-bottom:20px}
+h1 span,.blue{color:#168cff}
+.hero p{max-width:560px;color:#9ba9bd;font-size:17px;margin-bottom:30px}
+.btn{display:inline-block;background:#168cff;color:white;padding:13px 23px;border-radius:8px;font-weight:bold}
+.btn:hover{background:#0068cf}
+section{padding:85px 0}
+.section-title{font-size:34px;margin-bottom:12px}
+.section-subtitle{color:#9ba9bd;margin-bottom:35px}
+.card{background:#101827;border:1px solid #1d2d43;border-radius:14px;padding:25px}
+.about p,.card p{color:#9ba9bd}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card:hover{border-color:#168cff;transform:translateY(-4px);transition:.3s}
+.card h3{color:#60b5ff;margin-bottom:10px}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.number{color:#168cff;margin-bottom:12px}
+.project-link{display:inline-block;color:#60b5ff;margin-top:18px}
+.contact{background:linear-gradient(135deg,#10233b,#101827);border:1px solid #1e4c78;border-radius:16px;padding:45px 20px;text-align:center}
+.contact p{color:#9ba9bd;margin:15px auto 25px;max-width:500px}
+footer{text-align:center;padding:25px;border-top:1px solid #1b2a3e;color:#9ba9bd;font-size:13px}
+@media(max-width:650px){
+nav{height:auto;min-height:70px;flex-wrap:wrap;padding:15px 0;gap:12px}
+.nav-links{gap:13px}
+.nav-links a{font-size:12px}
+.grid{grid-template-columns:repeat(2,1fr)}
+.projects{grid-template-columns:1fr}
+.hero{min-height:530px}
+}
+@media(max-width:380px){.nav-links{gap:8px}.nav-links a{font-size:11px}}
+</style>
 </head>
 <body>
-  <h1>Salom, dunyo!</h1>
-  <p>Bu mening birinchi saytim.</p>
+
+<header>
+<div class="container">
+<nav>
+<div class="logo">BEHRUZ.</div>
+<ul class="nav-links">
+<li><a href="#home">Bosh sahifa</a></li>
+<li><a href="#about">Men haqimda</a></li>
+<li><a href="#skills">Bilimlar</a></li>
+<li><a href="#projects">Loyihalar</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="container">
+<div class="tag">● Shaxsiy portfolio</div>
+<h1>Salom, men<br><span>Behruz.</span></h1>
+<p>Texnologiyalar, dasturlash va kiberxavfsizlikka qiziquvchi yosh izlanuvchiman. Bu mening shaxsiy portfolio saytim.</p>
+<a href="#about" class="btn">Men haqimda</a>
+</div>
+</section>
+
+<section id="about">
+<div class="container">
+<h2 class="section-title">Men <span class="blue">haqimda</span></h2>
+<p class="section-subtitle">O'zim haqimda qisqacha</p>
+<div class="card about">
+<p>Men Behruzman. Texnologiyalar olami, kompyuter tizimlari, web dasturlash va kiberxavfsizlikka qiziqaman. Hozirda yangi bilimlarni o'rganib, o'z ustimda ishlayapman. Maqsadim — kelajakda kuchli mutaxassis bo'lish.</p>
+</div>
+</div>
+</section>
+
+<section id="skills">
+<div class="container">
+<h2 class="section-title">Mening <span class="blue">bilimlarim</span></h2>
+<p class="section-subtitle">O'rganayotgan yo'nalishlarim</p>
+<div class="grid">
+<div class="card"><h3>HTML</h3><p>Web sahifalar tuzilishini o'rganish.</p></div>
+<div class="card"><h3>CSS</h3><p>Sayt dizayni va bezaklari.</p></div>
+<div class="card"><h3>JavaScript</h3><p>Interaktiv web sahifalar yaratish.</p></div>
+<div class="card"><h3>Cybersecurity</h3><p>Kiberxavfsizlik asoslarini o'rganish.</p></div>
+<div class="card"><h3>Computer</h3><p>Kompyuter tizimlari va texnologiyalar.</p></div>
+<div class="card"><h3>Learning</h3><p>Doimiy o'rganish va rivojlanish.</p></div>
+</div>
+</div>
+</section>
+
+<section id="projects">
+<div class="container">
+<h2 class="section-title">Mening <span class="blue">loyihalarim</span></h2>
+<p class="section-subtitle">Hozirgacha yaratgan ishlarim</p>
+<div class="projects">
+<div class="card">
+<div class="number">01 / FIRST PROJECT</div>
+<h3>Birinchi veb-saytim</h3>
+<p>HTML yordamida yaratgan ilk shaxsiy veb-sahifam.</p>
+<a class="project-link" href="https://adot46541-star.github.io/mening-birinchi-saytim/">Saytni ko'rish ↗</a>
+</div>
+<div class="card">
+<div class="number">02 / COMING SOON</div>
+<h3>Keyingi loyiha</h3>
+<p>Yangi loyihalarim tez orada shu yerda paydo bo'ladi.</p>
+<span class="project-link">Tez kunda...</span>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<div class="contact">
+<h2 class="section-title">Men bilan <span class="blue">bog'laning</span></h2>
+<p>Hamkorlik va loyihalar bo'yicha bog'lanish uchun quyidagi tugmadan foydalaning.</p>
+<a href="#home" class="btn">Yuqoriga qaytish ↑</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+© 2026 Behruz. Barcha huquqlar himoyalangan.
+</footer>
+
 </body>
 </html>
