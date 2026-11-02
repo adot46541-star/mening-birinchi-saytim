@@ -4,779 +4,471 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080b14">
-<title>BEHRUZ | Portfolio</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#050711">
+<title>HAYDAROV BEHRUZ FERUZOVICH | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #080b14;
-  --text: #edf2fa;
-  --muted: #9ba8bc;
-  --line: rgba(210,225,255,.13);
-  --glass: rgba(255,255,255,.055);
-  --blue: #8cbcff;
-  --purple: #a99aff;
+  --bg:#050711;
+  --white:#f1f5ff;
+  --muted:#9ba8c2;
+  --blue:#91baff;
+  --purple:#b7a2ff;
+  --glass:rgba(255,255,255,.055);
+  --border:rgba(205,222,255,.17);
 }
-
-* { margin:0; padding:0; box-sizing:border-box; }
-
-html { scroll-behavior:smooth; }
-
-body {
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
   background:var(--bg);
-  color:var(--text);
-  font-family:Inter, sans-serif;
+  color:var(--white);
+  font-family:Inter,sans-serif;
   overflow-x:hidden;
-  line-height:1.6;
 }
+a{color:inherit;text-decoration:none}
+button{font:inherit}
 
-a { color:inherit; text-decoration:none; }
-
-#space {
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  z-index:-3;
+/* SPACE BACKGROUND */
+#universe{
+  position:fixed;inset:0;width:100%;height:100%;
+  z-index:-5;pointer-events:none;
 }
-
-.ambient {
-  position:fixed;
-  inset:0;
-  z-index:-2;
+.space-bg{
+  position:fixed;inset:0;z-index:-4;overflow:hidden;
   pointer-events:none;
-  overflow:hidden;
 }
-
-.nebula {
-  position:absolute;
-  width:650px;
-  height:650px;
-  border-radius:50%;
-  filter:blur(110px);
-  opacity:.16;
-  animation:nebulaMove 18s ease-in-out infinite alternate;
+.aurora{
+  position:absolute;width:70vw;height:70vw;
+  border-radius:50%;filter:blur(100px);opacity:.17;
+  animation:aurora 22s ease-in-out infinite alternate;
 }
-
-.nebula.one {
-  background:#355fae;
-  top:-280px;
-  left:-180px;
+.a1{background:#2855b5;top:-40%;left:-20%}
+.a2{background:#743dba;right:-35%;top:10%;animation-delay:-8s}
+.a3{background:#176c91;bottom:-55%;left:20%;animation-delay:-13s}
+@keyframes aurora{
+  0%{transform:translate(0,0) scale(.9)}
+  50%{transform:translate(10vw,8vh) scale(1.2)}
+  100%{transform:translate(-5vw,15vh) scale(1.05)}
 }
-
-.nebula.two {
-  background:#6544a7;
-  right:-280px;
-  top:25%;
-  animation-delay:-8s;
+.space-vignette{
+  position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background:radial-gradient(ellipse at center,transparent 25%,rgba(0,0,0,.55) 100%);
 }
-
-.nebula.three {
-  background:#286f8d;
-  bottom:-400px;
-  left:25%;
-  animation-delay:-4s;
-}
-
-@keyframes nebulaMove {
-  from { transform:translate(0,0) scale(1); }
-  to { transform:translate(100px,70px) scale(1.25); }
-}
-
-.noise {
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-1;
-  opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
-}
-
-.cursor-glow {
-  position:fixed;
-  width:350px;
-  height:350px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(104,157,255,.10),transparent 70%);
-  pointer-events:none;
+#pointerGlow{
+  position:fixed;left:50%;top:50%;width:400px;height:400px;
+  border-radius:50%;pointer-events:none;z-index:-1;
+  background:radial-gradient(circle,rgba(111,159,255,.13),transparent 68%);
   transform:translate(-50%,-50%);
-  z-index:0;
 }
 
-nav {
-  position:fixed;
-  top:18px;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(1100px,92%);
-  z-index:20;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:13px 20px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:rgba(9,13,25,.62);
-  backdrop-filter:blur(24px) saturate(150%);
-  -webkit-backdrop-filter:blur(24px) saturate(150%);
-  box-shadow:0 12px 45px rgba(0,0,0,.22);
+/* NAVIGATION */
+.nav{
+  position:fixed;z-index:100;top:18px;left:50%;
+  transform:translateX(-50%);width:min(1120px,93%);
+  padding:13px 21px;border:1px solid var(--border);
+  border-radius:19px;background:rgba(12,17,34,.52);
+  backdrop-filter:blur(30px) saturate(180%);
+  -webkit-backdrop-filter:blur(30px) saturate(180%);
+  box-shadow:0 15px 50px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{font-size:17px;font-weight:900;letter-spacing:3px}
+.brand span{color:var(--blue)}
+.navlinks{display:flex;gap:27px}
+.navlinks a{font-size:11px;color:var(--muted);transition:.3s}
+.navlinks a:hover{color:white}
+.menu{
+  display:none;background:transparent;color:white;border:0;
+  font-size:25px;cursor:pointer
 }
 
-.logo {
-  font-size:17px;
-  font-weight:800;
-  letter-spacing:3px;
+/* HERO */
+section{width:min(1080px,90%);margin:auto;position:relative}
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;padding-top:105px;
 }
-
-.logo span { color:var(--blue); }
-
-.nav-links {
-  display:flex;
-  align-items:center;
-  gap:28px;
+.tag{
+  color:#a9caff;font-size:10px;letter-spacing:4px;
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:25px;
 }
-
-.nav-links a {
-  font-size:12px;
-  color:var(--muted);
-  transition:.3s;
+.tag:before{
+  content:"";width:30px;height:1px;background:var(--blue);
+  box-shadow:0 0 12px var(--blue)
 }
-
-.nav-links a:hover { color:white; }
-
-.menu-btn {
-  display:none;
-  border:0;
-  background:none;
-  color:white;
-  font-size:24px;
-  cursor:pointer;
+.hero h1{
+  font-size:clamp(43px,9.5vw,105px);
+  font-weight:900;line-height:1.02;
+  letter-spacing:-.075em;
+  animation:entrance 1.3s cubic-bezier(.16,1,.3,1) both;
 }
-
-section {
-  width:min(1100px,90%);
-  margin:auto;
-  position:relative;
-  z-index:1;
-}
-
-.hero {
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding-top:100px;
-}
-
-.eyebrow {
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  color:#a9caff;
-  font-size:11px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  margin-bottom:22px;
-}
-
-.eyebrow:before {
-  content:"";
-  width:25px;
-  height:1px;
-  background:var(--blue);
-}
-
-.hero h1 {
-  font-size:clamp(55px,11vw,120px);
-  line-height:.98;
-  letter-spacing:-7px;
-  font-weight:800;
-  max-width:900px;
-  animation:heroIn 1.2s cubic-bezier(.2,.8,.2,1) both;
-}
-
-.hero h1 span {
-  background:linear-gradient(110deg,#fff 10%,#a9caff 45%,#b8a7ff 85%);
+.hero h1 .name{
+  background:linear-gradient(100deg,#fff 5%,#a8c9ff 38%,#c3b0ff 72%,#fff);
+  background-size:200% auto;
+  color:transparent;background-clip:text;
   -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  animation:shimmer 7s linear infinite;
+}
+@keyframes shimmer{to{background-position:200% center}}
+@keyframes entrance{
+  from{opacity:0;transform:translateY(55px);filter:blur(15px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+.hero-sub{
+  font-size:clamp(12px,1.5vw,15px);
+  color:var(--muted);margin-top:25px;
+  line-height:2;max-width:570px;
+  animation:entrance 1.4s .2s both;
+}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px}
+.btn{
+  border:1px solid var(--border);border-radius:13px;
+  padding:14px 21px;font-size:11px;font-weight:700;
+  display:inline-flex;align-items:center;gap:12px;
+  transition:.35s;position:relative;overflow:hidden;
+}
+.btn.primary{
+  color:#10182b;background:linear-gradient(120deg,#d1e2ff,#91aaff);
+  border:0;box-shadow:0 0 35px rgba(119,159,255,.2);
+}
+.btn.secondary{background:rgba(255,255,255,.055);backdrop-filter:blur(15px)}
+.btn:hover{transform:translateY(-5px);box-shadow:0 12px 35px rgba(110,155,255,.22)}
+.hero-bottom{
+  position:absolute;bottom:35px;left:0;
+  color:#7786a4;font-size:9px;letter-spacing:4px;
+}
+.scrollline{
+  display:inline-block;width:35px;height:1px;
+  background:#8baeff;vertical-align:middle;margin-right:10px;
 }
 
-@keyframes heroIn {
-  from { opacity:0; transform:translateY(45px); filter:blur(12px); }
-  to { opacity:1; transform:translateY(0); filter:blur(0); }
+/* GLASS SYSTEM */
+.glass{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,rgba(255,255,255,.105),rgba(255,255,255,.025));
+  border:1px solid var(--border);border-radius:23px;
+  backdrop-filter:blur(28px) saturate(165%);
+  -webkit-backdrop-filter:blur(28px) saturate(165%);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.16),
+             inset 0 -1px rgba(255,255,255,.035),
+             0 25px 75px rgba(0,0,0,.22);
 }
-
-.hero-description {
-  max-width:550px;
-  margin-top:28px;
-  color:var(--muted);
-  font-size:15px;
-  line-height:1.9;
-  animation:heroIn 1.5s .2s both;
+.glass:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.12) 48%,transparent 72%);
+  transform:translateX(-130%);transition:transform 1s ease;
 }
-
-.hero-actions {
-  display:flex;
-  gap:14px;
-  margin-top:35px;
-  flex-wrap:wrap;
-  animation:heroIn 1.5s .35s both;
-}
-
-.btn {
-  padding:13px 22px;
-  border-radius:12px;
-  border:1px solid var(--line);
-  font-size:12px;
-  font-weight:600;
-  transition:.35s;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-}
-
-.btn.primary {
-  background:linear-gradient(110deg,#b8d4ff,#8e9fff);
-  color:#101725;
-  border:0;
-  box-shadow:0 8px 30px rgba(105,150,255,.18);
-}
-
-.btn:hover {
-  transform:translateY(-4px);
-  box-shadow:0 12px 35px rgba(111,153,255,.2);
-}
-
-.btn.secondary { background:var(--glass); }
-
-.scroll-note {
-  position:absolute;
-  bottom:35px;
-  left:0;
-  color:#75849b;
-  font-size:10px;
-  letter-spacing:3px;
-}
-
-.scroll-note span {
-  display:inline-block;
-  width:35px;
-  height:1px;
-  background:#75849b;
-  vertical-align:middle;
-  margin-right:12px;
-}
-
-.section-heading {
-  margin-bottom:35px;
-}
-
-.section-heading small {
-  color:var(--blue);
-  font-size:10px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-}
-
-.section-heading h2 {
-  font-size:clamp(32px,5vw,52px);
-  letter-spacing:-2px;
-  margin-top:10px;
-}
-
-.section-heading p {
-  color:var(--muted);
-  font-size:13px;
-  margin-top:10px;
-}
-
-.content-section {
-  padding-top:115px;
-  padding-bottom:65px;
-}
-
-.glass {
-  background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.025));
-  border:1px solid rgba(205,224,255,.15);
-  border-radius:22px;
-  backdrop-filter:blur(22px) saturate(140%);
-  -webkit-backdrop-filter:blur(22px) saturate(140%);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.10),
-    0 18px 60px rgba(0,0,0,.18);
-  position:relative;
-  overflow:hidden;
-}
-
-.glass:before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,transparent 25%,rgba(255,255,255,.07) 45%,transparent 65%);
-  transform:translateX(-120%);
-  transition:transform .8s;
+.glass:hover:before{transform:translateX(130%)}
+.glass:after{
+  content:"";position:absolute;inset:0;border-radius:inherit;
   pointer-events:none;
+  background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(160,194,255,.12),transparent 60%);
+  opacity:0;transition:opacity .4s;
 }
+.glass:hover:after{opacity:1}
 
-.glass:hover:before { transform:translateX(120%); }
-
-.about-card {
-  padding:35px;
-  display:grid;
-  grid-template-columns:1.4fr .8fr;
-  gap:35px;
-  align-items:center;
+/* SECTION */
+.block{padding-top:120px;padding-bottom:40px}
+.heading{margin-bottom:35px}
+.heading small{font-size:10px;color:var(--blue);letter-spacing:4px}
+.heading h2{font-size:clamp(32px,5vw,53px);letter-spacing:-3px;margin-top:12px}
+.heading p{color:var(--muted);font-size:12px;margin-top:8px}
+.reveal{
+  opacity:0;transform:translateY(45px) scale(.98);
+  transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1);
 }
+.reveal.show{opacity:1;transform:translateY(0) scale(1)}
 
-.about-card p {
-  color:var(--muted);
-  font-size:14px;
-  line-height:2;
-  position:relative;
+/* ABOUT */
+.about{
+  padding:35px;display:grid;
+  grid-template-columns:1.5fr .8fr;gap:35px;align-items:center;
 }
+.about-text{color:var(--muted);font-size:13px;line-height:2.1}
+.about-text strong{color:#d9e6ff}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{padding:19px;border:1px solid var(--border);border-radius:15px;background:rgba(255,255,255,.035)}
+.stat strong{font-size:24px;display:block;color:#c4d8ff}
+.stat span{font-size:9px;color:var(--muted)}
 
-.about-stats {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+/* SKILLS */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.skill{
+  min-height:155px;padding:24px;
+  transition:transform .45s,border-color .4s,box-shadow .4s;
+  transform-style:preserve-3d;
 }
-
-.stat {
-  padding:20px;
-  border-radius:15px;
-  background:rgba(255,255,255,.045);
-  border:1px solid var(--line);
+.skill:hover{
+  transform:translateY(-9px) rotateX(3deg) rotateY(-3deg);
+  border-color:rgba(150,190,255,.48);
+  box-shadow:0 22px 60px rgba(63,111,206,.12);
 }
+.skill-icon{font-size:24px;color:#b9d2ff;margin-bottom:17px}
+.skill h3{font-size:14px;margin-bottom:7px}
+.skill p{font-size:10px;color:var(--muted)}
 
-.stat strong {
-  display:block;
-  font-size:24px;
-  color:#c6d9ff;
-}
-
-.stat span {
-  color:var(--muted);
-  font-size:10px;
-}
-
-.skills-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-
-.skill {
-  padding:24px;
-  min-height:145px;
+/* PROJECTS */
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.project{
+  padding:27px;min-height:225px;
+  display:flex;flex-direction:column;justify-content:space-between;
   transition:transform .4s,border-color .4s;
 }
+.project:hover{transform:translateY(-8px);border-color:rgba(160,190,255,.45)}
+.project-label{font-size:9px;letter-spacing:3px;color:#a9caff}
+.project h3{font-size:21px;margin:18px 0 8px}
+.project p{font-size:11px;color:var(--muted);line-height:1.8}
+.project a{font-size:11px;color:#c2d5ff;margin-top:22px}
 
-.skill:hover {
-  transform:translateY(-7px);
-  border-color:rgba(150,190,255,.4);
+/* CONTACT */
+.contact{text-align:center;padding:55px 25px}
+.contact .tag{justify-content:center}
+.contact h2{font-size:clamp(30px,5vw,48px);letter-spacing:-2px}
+.contact p{font-size:12px;color:var(--muted);margin:15px auto 25px;max-width:440px}
+footer{
+  width:min(1080px,90%);margin:70px auto 0;
+  padding:25px 0;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;gap:15px;
+  color:#78859f;font-size:9px;letter-spacing:1px;
 }
-
-.skill .symbol {
-  font-size:23px;
-  color:#a9caff;
-  margin-bottom:15px;
-}
-
-.skill h3 {
-  font-size:14px;
-  margin-bottom:7px;
-}
-
-.skill p {
-  color:var(--muted);
-  font-size:11px;
-}
-
-.projects-grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-
-.project {
-  padding:27px;
-  min-height:215px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  transition:transform .4s,border-color .4s;
-}
-
-.project:hover {
-  transform:translateY(-7px) scale(1.01);
-  border-color:rgba(150,190,255,.4);
-}
-
-.project-top {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  color:#9dbdff;
-  font-size:11px;
-  letter-spacing:2px;
-}
-
-.project h3 {
-  font-size:21px;
-  margin:20px 0 8px;
-}
-
-.project p {
-  color:var(--muted);
-  font-size:12px;
-}
-
-.project-link {
-  margin-top:20px;
-  font-size:12px;
-  color:#b7ceff;
-}
-
-.contact-card {
-  padding:50px 30px;
-  text-align:center;
-}
-
-.contact-card h2 {
-  font-size:clamp(30px,5vw,48px);
-  letter-spacing:-2px;
-}
-
-.contact-card p {
-  color:var(--muted);
-  font-size:13px;
-  margin:15px auto 25px;
-  max-width:430px;
-}
-
-footer {
-  width:min(1100px,90%);
-  margin:70px auto 0;
-  padding:25px 0;
-  border-top:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  color:#748096;
-  font-size:10px;
-}
-
-.reveal {
-  opacity:0;
-  transform:translateY(35px);
-  transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);
-}
-
-.reveal.visible {
-  opacity:1;
-  transform:translateY(0);
-}
-
-@media(max-width:700px) {
-  nav { top:10px; }
-  .menu-btn { display:block; }
-  .nav-links {
-    display:none;
-    position:absolute;
-    top:62px;
-    left:0;
-    right:0;
-    padding:20px;
-    background:rgba(9,13,25,.95);
-    backdrop-filter:blur(20px);
-    border:1px solid var(--line);
-    border-radius:16px;
-    flex-direction:column;
-    gap:20px;
+@media(max-width:700px){
+  .nav{top:10px}
+  .menu{display:block}
+  .navlinks{
+    display:none;position:absolute;top:62px;left:0;right:0;
+    padding:22px;background:rgba(8,13,28,.94);
+    backdrop-filter:blur(25px);border:1px solid var(--border);
+    border-radius:16px;flex-direction:column;gap:20px;
   }
-  .nav-links.open { display:flex; }
-  .hero h1 { letter-spacing:-4px; }
-  .hero-description { font-size:13px; }
-  .about-card { grid-template-columns:1fr; padding:24px; }
-  .skills-grid { grid-template-columns:repeat(2,1fr); }
-  .projects-grid { grid-template-columns:1fr; }
-  .content-section { padding-top:85px; }
-  .scroll-note { bottom:20px; }
-  footer { flex-direction:column; }
-  .cursor-glow { display:none; }
+  .navlinks.open{display:flex}
+  .hero h1{letter-spacing:-.065em}
+  .about{grid-template-columns:1fr;padding:23px}
+  .skills{grid-template-columns:1fr 1fr}
+  .projects{grid-template-columns:1fr}
+  .block{padding-top:85px}
+  footer{flex-direction:column}
+  #pointerGlow{display:none}
 }
-
-@media(max-width:390px) {
-  .skills-grid { grid-template-columns:1fr; }
-}
-
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after {
-    animation-duration:.01ms !important;
-    transition-duration:.01ms !important;
-    scroll-behavior:auto !important;
-  }
-  .reveal { opacity:1; transform:none; }
+@media(max-width:390px){.skills{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
 }
 </style>
 </head>
 
 <body>
-
-<canvas id="space"></canvas>
-
-<div class="ambient">
-  <div class="nebula one"></div>
-  <div class="nebula two"></div>
-  <div class="nebula three"></div>
+<canvas id="universe"></canvas>
+<div class="space-bg">
+  <div class="aurora a1"></div>
+  <div class="aurora a2"></div>
+  <div class="aurora a3"></div>
 </div>
-<div class="noise"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
+<div class="space-vignette"></div>
+<div id="pointerGlow"></div>
 
-<nav>
-  <a class="logo" href="#home">BEHRUZ<span>.</span></a>
-
-  <div class="nav-links" id="navLinks">
+<nav class="nav">
+  <a href="#home" class="brand">BEHRUZ<span>.</span></a>
+  <div class="navlinks" id="navlinks">
     <a href="#home">Bosh sahifa</a>
     <a href="#about">Men haqimda</a>
-    <a href="#skills">Ko‘nikmalar</a>
+    <a href="#skills">Yo‘nalishlar</a>
     <a href="#projects">Loyihalar</a>
     <a href="#contact">Aloqa</a>
   </div>
-
-  <button class="menu-btn" id="menuBtn" aria-label="Menyuni ochish">☰</button>
+  <button class="menu" id="menu" aria-label="Menyu">☰</button>
 </nav>
 
 <main>
 <section class="hero" id="home">
-  <div class="eyebrow">WELCOME TO MY UNIVERSE</div>
-
-  <h1>BEHRUZ<br><span>FERUZOV.</span></h1>
-
-  <p class="hero-description">
-    Men texnologiya, kompyuter fanlari va kiberxavfsizlik olamiga qiziqadigan
-    yosh izlanuvchiman. Har kuni yangi bilim, yangi maqsad va yangi imkoniyat.
+  <div class="tag">WELCOME TO MY UNIVERSE</div>
+  <h1>HAYDAROV<br><span class="name">BEHRUZ</span><br>FERUZOVICH.</h1>
+  <p class="hero-sub">
+    Technology enthusiast. Future Cybersecurity specialist.
+    Men texnologiya, kompyuter tizimlari va kiberxavfsizlik olamida
+    o‘z bilimlarini rivojlantirayotgan yosh izlanuvchiman.
   </p>
-
-  <div class="hero-actions">
-    <a class="btn primary" href="#projects">Loyihalarim ↗</a>
-    <a class="btn secondary" href="#about">Men haqimda</a>
+  <div class="actions">
+    <a class="btn primary" href="#projects">Loyihalarim <span>↗</span></a>
+    <a class="btn secondary" href="#about">Men haqimda <span>↓</span></a>
   </div>
-
-  <div class="scroll-note"><span></span> SCROLL TO EXPLORE</div>
+  <div class="hero-bottom"><span class="scrollline"></span> EXPLORE THE UNKNOWN</div>
 </section>
 
-<section class="content-section" id="about">
-  <div class="section-heading reveal">
+<section class="block" id="about">
+  <div class="heading reveal">
     <small>01 / ABOUT ME</small>
-    <h2>Men haqimda</h2>
-    <p>Kimman va qaysi yo‘nalishda rivojlanyapman?</p>
+    <h2>Men haqimda.</h2>
+    <p>Maqsad, qiziqish va rivojlanish.</p>
   </div>
-
-  <div class="glass about-card reveal">
-    <p>
-      Men Behruzman. Texnologiya va kiberxavfsizlikka qiziqaman.
-      Hozirda kompyuter tizimlari, tarmoqlar, dasturlash va
-      axborot xavfsizligi bo‘yicha bilimlarimni rivojlantiryapman.
-      Maqsadim — kuchli mutaxassis bo‘lish va o‘z ustimda muntazam ishlash.
+  <div class="glass about reveal">
+    <p class="about-text">
+      Men <strong>Haydarov Behruz Feruzovich</strong>man.
+      Texnologiya, kompyuter fanlari va kiberxavfsizlikka qiziqaman.
+      Hozirda kompyuter tizimlari, tarmoqlar, Linux va web
+      texnologiyalarini o‘rganmoqdaman.
+      <br><br>
+      Kelajakdagi maqsadim — <strong>Cyber Defense</strong> yo‘nalishida
+      bilim va tajribaga ega mutaxassis bo‘lish.
+      Men uchun rivojlanish — doimiy jarayon.
     </p>
-
-    <div class="about-stats">
-      <div class="stat">
-        <strong>01</strong>
-        <span>Doimiy o‘rganish</span>
-      </div>
-      <div class="stat">
-        <strong>∞</strong>
-        <span>Yangi imkoniyatlar</span>
-      </div>
+    <div class="stats">
+      <div class="stat"><strong>01</strong><span>Doimiy o‘rganish</span></div>
+      <div class="stat"><strong>∞</strong><span>Imkoniyatlar</span></div>
     </div>
   </div>
 </section>
 
-<section class="content-section" id="skills">
-  <div class="section-heading reveal">
-    <small>02 / MY SKILLS</small>
-    <h2>Yo‘nalishlarim</h2>
-    <p>O‘rganayotgan va rivojlantirayotgan sohalarim.</p>
+<section class="block" id="skills">
+  <div class="heading reveal">
+    <small>02 / EXPERTISE</small>
+    <h2>Yo‘nalishlarim.</h2>
+    <p>O‘rganayotgan texnologik sohalarim.</p>
   </div>
-
-  <div class="skills-grid">
-    <article class="glass skill reveal">
-      <div class="symbol">⌘</div>
-      <h3>Computer Science</h3>
-      <p>Kompyuter tizimlari va texnologiyalar.</p>
-    </article>
-
-    <article class="glass skill reveal">
-      <div class="symbol">⌬</div>
-      <h3>Cybersecurity</h3>
-      <p>Axborot xavfsizligi asoslari.</p>
-    </article>
-
-    <article class="glass skill reveal">
-      <div class="symbol">〈/〉</div>
-      <h3>Web Development</h3>
-      <p>HTML, CSS va web texnologiyalar.</p>
-    </article>
-
-    <article class="glass skill reveal">
-      <div class="symbol">⌁</div>
-      <h3>Networking</h3>
-      <p>Kompyuter tarmoqlari asoslari.</p>
-    </article>
-
-    <article class="glass skill reveal">
-      <div class="symbol">▣</div>
-      <h3>Linux</h3>
-      <p>Linux operatsion tizimini o‘rganish.</p>
-    </article>
-
-    <article class="glass skill reveal">
-      <div class="symbol">✧</div>
-      <h3>Problem Solving</h3>
-      <p>Mantiqiy fikrlash va muammolarni yechish.</p>
-    </article>
+  <div class="skills">
+    <article class="glass skill reveal"><div class="skill-icon">⌘</div><h3>Computer Science</h3><p>Kompyuter tizimlari va asoslari.</p></article>
+    <article class="glass skill reveal"><div class="skill-icon">⌬</div><h3>Cybersecurity</h3><p>Axborot xavfsizligi asoslari.</p></article>
+    <article class="glass skill reveal"><div class="skill-icon">〈/〉</div><h3>Web Development</h3><p>HTML, CSS va web texnologiyalar.</p></article>
+    <article class="glass skill reveal"><div class="skill-icon">⌁</div><h3>Networking</h3><p>Kompyuter tarmoqlari.</p></article>
+    <article class="glass skill reveal"><div class="skill-icon">▣</div><h3>Linux</h3><p>Linux tizimi bilan ishlash.</p></article>
+    <article class="glass skill reveal"><div class="skill-icon">✧</div><h3>Problem Solving</h3><p>Mantiqiy fikrlash va tahlil.</p></article>
   </div>
 </section>
 
-<section class="content-section" id="projects">
-  <div class="section-heading reveal">
+<section class="block" id="projects">
+  <div class="heading reveal">
     <small>03 / SELECTED WORK</small>
-    <h2>Loyihalarim</h2>
-    <p>O‘rganish davomida yaratgan ishlarim.</p>
+    <h2>Loyihalarim.</h2>
+    <p>O‘rganish jarayonidagi ishlarim.</p>
   </div>
-
-  <div class="projects-grid">
+  <div class="projects">
     <article class="glass project reveal">
       <div>
-        <div class="project-top"><span>PROJECT 01</span><span>✧</span></div>
+        <div class="project-label">PROJECT 01 / WEB</div>
         <h3>Personal Portfolio</h3>
-        <p>Shaxsiy portfolio saytim. Dizayn, web texnologiyalar va kreativ yondashuv.</p>
+        <p>Shaxsiy portfolio. Web dizayn, animatsiyalar va zamonaviy interfeys.</p>
       </div>
-      <a class="project-link" href="https://adot46541-star.github.io/mening-birinchi-saytim/" target="_blank" rel="noopener">Saytni ko‘rish ↗</a>
+      <a href="https://adot46541-star.github.io/mening-birinchi-saytim/" target="_blank" rel="noopener">Saytni ko‘rish ↗</a>
     </article>
-
     <article class="glass project reveal">
       <div>
-        <div class="project-top"><span>PROJECT 02</span><span>✧</span></div>
+        <div class="project-label">PROJECT 02 / LEARNING</div>
         <h3>My Learning Journey</h3>
-        <p>Kompyuter fanlari va kiberxavfsizlik bo‘yicha bilimlarim rivoji.</p>
+        <p>Cybersecurity, networking va kompyuter fanlari bo‘yicha o‘rganish yo‘lim.</p>
       </div>
-      <span class="project-link">In progress · Davom etmoqda</span>
+      <a href="#skills">Yo‘nalishlarim ↗</a>
     </article>
   </div>
 </section>
 
-<section class="content-section" id="contact">
-  <div class="glass contact-card reveal">
-    <div class="eyebrow" style="justify-content:center">04 / CONTACT</div>
+<section class="block" id="contact">
+  <div class="glass contact reveal">
+    <div class="tag">04 / CONTACT</div>
     <h2>Let's connect.</h2>
-    <p>Hamkorlik, loyihalar yoki texnologiya haqida suhbatlashish uchun.</p>
+    <p>Texnologiya, dasturlash va yangi loyihalar haqida.</p>
     <a class="btn primary" href="https://github.com/adot46541-star" target="_blank" rel="noopener">GitHub profilim ↗</a>
   </div>
 </section>
 </main>
 
 <footer>
-  <span>© 2026 BEHRUZ. All rights reserved.</span>
+  <span>© 2026 HAYDAROV BEHRUZ FERUZOVICH</span>
   <span>BUILT WITH CURIOSITY · DESIGNED IN SPACE</span>
 </footer>
 
 <script>
-// Animated starfield
-const canvas = document.getElementById("space");
-const ctx = canvas.getContext("2d");
-let stars = [];
-let width, height;
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const canvas=document.getElementById("universe");
+const ctx=canvas.getContext("2d");
+const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let w,h,stars=[],meteors=[],raf=0;
 
-function resize() {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  width = window.innerWidth;
-  height = window.innerHeight;
-  canvas.width = width * dpr;
-  canvas.height = height * dpr;
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-  const count = Math.min(180, Math.floor(width * height / 6500));
-  stars = Array.from({length:count}, () => ({
-    x:Math.random()*width,
-    y:Math.random()*height,
-    size:Math.random()*1.5+.3,
-    alpha:Math.random()*.65+.2,
-    speed:Math.random()*.25+.04,
-    phase:Math.random()*Math.PI*2
+function resize(){
+  const dpr=Math.min(devicePixelRatio||1,2);
+  w=innerWidth;h=innerHeight;
+  canvas.width=w*dpr;canvas.height=h*dpr;
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  stars=Array.from({length:Math.min(230,Math.floor(w*h/4500))},()=>({
+    x:Math.random()*w,y:Math.random()*h,
+    r:Math.random()*1.35+.25,
+    a:Math.random()*.7+.2,
+    speed:Math.random()*.22+.025,
+    phase:Math.random()*6.28
   }));
 }
-
-function drawStars(time=0) {
-  ctx.clearRect(0,0,width,height);
-
-  for(const s of stars) {
-    const twinkle = reducedMotion ? 1 : .65 + Math.sin(time*.001+s.phase)*.35;
-    ctx.beginPath();
-    ctx.arc(s.x,s.y,s.size,0,Math.PI*2);
-    ctx.fillStyle = `rgba(205,225,255,${s.alpha*twinkle})`;
-    ctx.fill();
-
-    if(!reducedMotion) {
-      s.y -= s.speed;
-      if(s.y < -3) {
-        s.y = height+3;
-        s.x = Math.random()*width;
-      }
-    }
+function meteor(){
+  if(meteors.length<3 && Math.random()<.018){
+    meteors.push({
+      x:Math.random()*w*.9,y:Math.random()*h*.4,
+      vx:5+Math.random()*5,vy:2+Math.random()*3,
+      life:0,max:35+Math.random()*30
+    });
   }
-
-  if(!reducedMotion) requestAnimationFrame(drawStars);
 }
-
-window.addEventListener("resize",resize);
-resize();
-drawStars();
+function draw(t){
+  ctx.clearRect(0,0,w,h);
+  for(const s of stars){
+    const pulse=reduced?1:.55+.45*Math.sin(t*.001+s.phase);
+    ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(211,228,255,${s.a*pulse})`;ctx.fill();
+    if(!reduced){s.y-=s.speed;if(s.y<0){s.y=h;s.x=Math.random()*w}}
+  }
+  if(!reduced){
+    meteor();
+    meteors=meteors.filter(m=>m.life<m.max);
+    for(const m of meteors){
+      const alpha=1-m.life/m.max;
+      const g=ctx.createLinearGradient(m.x,m.y,m.x-m.vx*9,m.y-m.vy*9);
+      g.addColorStop(0,`rgba(220,235,255,${alpha})`);
+      g.addColorStop(1,"rgba(140,165,255,0)");
+      ctx.beginPath();ctx.moveTo(m.x,m.y);
+      ctx.lineTo(m.x-m.vx*9,m.y-m.vy*9);
+      ctx.strokeStyle=g;ctx.lineWidth=2;ctx.stroke();
+      m.x+=m.vx;m.y+=m.vy;m.life++;
+    }
+    raf=requestAnimationFrame(draw);
+  }
+}
+resize();draw(0);
+addEventListener("resize",resize);
 
 // Scroll reveal
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add("show");observer.unobserve(e.target)}
   });
 },{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-
-// Mobile menu
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
-
-menuBtn.addEventListener("click",() => {
-  navLinks.classList.toggle("open");
-  menuBtn.textContent = navLinks.classList.contains("open") ? "×" : "☰";
-});
-
-navLinks.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click",() => {
-    navLinks.classList.remove("open");
-    menuBtn.textContent = "☰";
+// Liquid glass light follows pointer
+document.querySelectorAll(".glass").forEach(card=>{
+  card.addEventListener("pointermove",e=>{
+    const r=card.getBoundingClientRect();
+    card.style.setProperty("--mx",(e.clientX-r.left)+"px");
+    card.style.setProperty("--my",(e.clientY-r.top)+"px");
   });
 });
 
-// Soft cursor glow
-const glow = document.getElementById("cursorGlow");
-if(!reducedMotion && window.matchMedia("(pointer:fine)").matches) {
-  window.addEventListener("pointermove",e => {
-    glow.style.left = e.clientX+"px";
-    glow.style.top = e.clientY+"px";
+// Cursor glow
+const glow=document.getElementById("pointerGlow");
+if(!reduced && matchMedia("(pointer:fine)").matches){
+  addEventListener("pointermove",e=>{
+    glow.style.left=e.clientX+"px";
+    glow.style.top=e.clientY+"px";
   });
 }
-</script>
 
+// Mobile navigation
+const menu=document.getElementById("menu");
+const links=document.getElementById("navlinks");
+menu.addEventListener("click",()=>{
+  links.classList.toggle("open");
+  menu.textContent=links.classList.contains("open")?"×":"☰";
+});
+links.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+  links.classList.remove("open");menu.textContent="☰";
+}));
+</script>
 </body>
 </html>
