@@ -1,18 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BEHRUZ | Cyber Portfolio</title>
+<meta name="theme-color" content="#101827">
+<title>Behruz | Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #050816;
-  --blue: #168cff;
-  --cyan: #00e5ff;
-  --purple: #8b5cf6;
-  --white: #f4f8ff;
-  --muted: #8998b5;
+  --bg: #101827;
+  --surface: #172235;
+  --card: #1b2638;
+  --text: #edf2f8;
+  --muted: #9aa9bc;
+  --accent: #7895b8;
+  --accent-light: #a7bfdc;
+  --border: rgba(190,210,235,.12);
+  --shadow: 0 18px 50px rgba(0,0,0,.22);
 }
 
 * {
@@ -23,38 +32,15 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
+  font-family: 'DM Sans', sans-serif;
   background: var(--bg);
-  color: var(--white);
-  font-family: Arial, sans-serif;
+  color: var(--text);
+  line-height: 1.7;
   overflow-x: hidden;
-  min-height: 100vh;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background:
-    radial-gradient(circle at 15% 20%, #006eff22, transparent 30%),
-    radial-gradient(circle at 85% 75%, #6428ff22, transparent 32%),
-    linear-gradient(135deg, #050816, #080d20);
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: .15;
-  background-image:
-    linear-gradient(#508cff20 1px, transparent 1px),
-    linear-gradient(90deg, #508cff20 1px, transparent 1px);
-  background-size: 45px 45px;
 }
 
 a {
@@ -66,64 +52,59 @@ button {
   font: inherit;
 }
 
-::selection {
-  background: var(--blue);
-  color: white;
+.container {
+  width: min(1100px, 88%);
+  margin: auto;
 }
 
-/* LOADER */
+section {
+  padding: 100px 0;
+  position: relative;
+}
 
-.loader {
+::selection {
+  background: var(--accent);
+  color: #101827;
+}
+
+/* BACKGROUND EFFECT */
+
+.background {
   position: fixed;
   inset: 0;
-  z-index: 9999;
-  display: grid;
-  place-items: center;
-  background: #030612;
-  transition: .7s;
-}
-
-.loader.hide {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.loader-content {
-  text-align: center;
-}
-
-.loader-logo {
-  font-size: 55px;
-  font-weight: 900;
-  color: var(--cyan);
-  text-shadow: 0 0 25px var(--blue);
-  animation: pulse 1.2s infinite alternate;
-}
-
-.loader-line {
-  width: 210px;
-  height: 3px;
-  margin: 22px auto;
-  background: #14223d;
+  z-index: -2;
   overflow: hidden;
+  pointer-events: none;
 }
 
-.loader-line::after {
-  content: "";
-  display: block;
-  width: 45%;
-  height: 100%;
-  background: var(--cyan);
-  animation: loading 1.3s infinite;
+.glow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: rgba(76,116,164,.13);
+  filter: blur(110px);
+  animation: floatGlow 12s ease-in-out infinite alternate;
 }
 
-.loader-text {
-  color: var(--muted);
-  font-size: 11px;
-  letter-spacing: 5px;
+.glow.one {
+  top: -180px;
+  left: -120px;
 }
 
-/* NAVIGATION */
+.glow.two {
+  bottom: -200px;
+  right: -130px;
+  background: rgba(87,137,177,.10);
+  animation-delay: -5s;
+}
+
+@keyframes floatGlow {
+  from { transform: translate(0,0) scale(1); }
+  to { transform: translate(70px,50px) scale(1.2); }
+}
+
+/* NAVBAR */
 
 header {
   position: fixed;
@@ -131,303 +112,242 @@ header {
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 20px 7%;
-  border-bottom: 1px solid #508cff20;
-  background: #050816cc;
+  background: rgba(16,24,39,.82);
   backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
 }
 
 .navbar {
-  max-width: 1250px;
+  width: min(1100px, 88%);
+  height: 76px;
   margin: auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 23px;
-  font-weight: 900;
-  letter-spacing: 3px;
+  font-weight: 700;
+  letter-spacing: -1px;
 }
 
 .logo span {
-  color: var(--cyan);
-  text-shadow: 0 0 15px var(--blue);
+  color: var(--accent-light);
 }
 
 .nav-links {
   display: flex;
-  align-items: center;
-  gap: 32px;
+  gap: 30px;
   list-style: none;
 }
 
 .nav-links a {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 1px;
-  transition: .3s;
+  transition: color .3s;
 }
 
 .nav-links a:hover {
-  color: var(--cyan);
-}/* NAVIGATION HOVER */
-
-.nav-links a {
-  position: relative;
+  color: var(--accent-light);
 }
 
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  left: 0;
-  bottom: -8px;
-  background: var(--cyan);
-  box-shadow: 0 0 12px var(--cyan);
-  transition: .4s;
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
+.theme-toggle,
+.menu-toggle {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  background: var(--surface);
+  cursor: pointer;
+  transition: .3s;
 }
 
-/* HERO SECTION */
+.theme-toggle:hover,
+.menu-toggle:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* HERO */
 
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 130px;
+  padding-top: 120px;
 }
 
 .hero-content {
-  max-width: 850px;
-  position: relative;
-  z-index: 2;
+  max-width: 760px;
 }
 
-.hero-tag {
-  display: inline-block;
-  padding: 10px 18px;
-  border: 1px solid #168cff55;
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
   border-radius: 30px;
-  color: var(--cyan);
-  background: #168cff12;
-  font-size: 11px;
-  letter-spacing: 3px;
-  margin-bottom: 30px;
-  animation: fadeUp 1s ease both;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 28px;
+  animation: fadeUp .8s both;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #83b59a;
+  box-shadow: 0 0 12px rgba(131,181,154,.6);
 }
 
 .hero h1 {
-  font-size: clamp(48px, 9vw, 100px);
-  line-height: 1.05;
-  font-weight: 900;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(48px, 8vw, 82px);
+  line-height: 1.08;
   letter-spacing: -4px;
-  animation: fadeUp 1s .2s ease both;
+  margin-bottom: 22px;
+  animation: fadeUp .8s .1s both;
 }
 
 .hero h1 span {
-  display: block;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--cyan);
-  text-shadow: 0 0 30px #168cff55;
+  color: var(--accent-light);
 }
 
 .hero-description {
-  max-width: 580px;
+  max-width: 570px;
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.9;
-  margin-top: 25px;
-  animation: fadeUp 1s .4s ease both;
+  font-size: 17px;
+  margin-bottom: 32px;
+  animation: fadeUp .8s .2s both;
 }
 
 .hero-buttons {
   display: flex;
-  gap: 16px;
   flex-wrap: wrap;
-  margin-top: 35px;
-  animation: fadeUp 1s .6s ease both;
+  gap: 14px;
+  animation: fadeUp .8s .3s both;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 25px;
-  border-radius: 7px;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  transition: .4s;
+  padding: 13px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform .3s, background .3s, box-shadow .3s;
 }
 
 .btn-primary {
-  color: #00101c;
-  background: linear-gradient(120deg, var(--cyan), var(--blue));
-  box-shadow: 0 0 25px #168cff55;
+  color: #101827;
+  background: var(--accent-light);
 }
 
-.btn-primary:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 40px #168cff99;
+.btn-secondary {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--surface);
 }
 
-.btn-outline {
-  border: 1px solid #168cff88;
-  color: var(--cyan);
-  background: #168cff0d;
-}
-
-.btn-outline:hover {
-  background: #168cff22;
-  transform: translateY(-5px);
-}
-
-/* FLOATING DECORATIONS */
-
-.hero-decoration {
-  position: absolute;
-  right: 5%;
-  top: 28%;
-  width: 270px;
-  height: 270px;
-  border: 1px solid #168cff44;
-  border-radius: 50%;
-  animation: rotate 20s linear infinite;
-}
-
-.hero-decoration::before {
-  content: "";
-  position: absolute;
-  inset: 25px;
-  border: 1px dashed #00e5ff66;
-  border-radius: 50%;
-}
-
-.hero-decoration::after {
-  content: "";
-  position: absolute;
-  inset: 65px;
-  border: 2px solid #168cff55;
-  border-radius: 50%;
-  box-shadow: 0 0 40px #168cff44;
-}
-
-.orbit-dot {
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: var(--cyan);
-  box-shadow: 0 0 20px var(--cyan);
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
 }
 
 /* SECTION TITLES */
 
 .section-label {
-  color: var(--cyan);
-  font-size: 11px;
-  letter-spacing: 4px;
-  margin-bottom: 15px;
+  color: var(--accent-light);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
 .section-title {
-  font-size: clamp(32px, 5vw, 55px);
-  font-weight: 900;
-  margin-bottom: 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(30px, 5vw, 44px);
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
 }
 
-.section-title span {
-  color: var(--cyan);
+.section-description {
+  max-width: 580px;
+  color: var(--muted);
 }
 
 /* ABOUT */
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 55px;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 50px;
   align-items: center;
 }
 
 .about-card {
-  position: relative;
-  padding: 35px;
+  padding: 30px;
   border: 1px solid var(--border);
-  border-radius: 18px;
-  background: var(--card);
-  backdrop-filter: blur(15px);
-  transition: .5s;
-  overflow: hidden;
-}
-
-.about-card::before {
-  content: "";
-  position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    120deg,
-    transparent 40%,
-    #168cff12 50%,
-    transparent 60%
-  );
-  transition: .8s;
-}
-
-.about-card:hover::before {
-  top: 0;
-  left: 0;
+  background: linear-gradient(145deg, var(--surface), var(--card));
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  transition: transform .4s, border-color .4s;
 }
 
 .about-card:hover {
-  transform: translateY(-8px);
-  border-color: #168cff88;
-  box-shadow: var(--glow);
+  transform: translateY(-6px);
+  border-color: rgba(167,191,220,.35);
 }
 
 .about-card p {
   color: var(--muted);
-  font-size: 14px;
-  line-height: 2;
-  position: relative;
+  margin-top: 12px;
 }
 
-.about-info {
+.info-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 15px;
-  margin-top: 25px;
 }
 
 .info-item {
-  padding: 17px;
-  background: #168cff0d;
+  padding: 17px 20px;
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 13px;
+  transition: transform .3s;
+}
+
+.info-item:hover {
+  transform: translateX(6px);
 }
 
 .info-item small {
   display: block;
   color: var(--muted);
-  font-size: 10px;
-  margin-bottom: 8px;
-  letter-spacing: 1px;
+  font-size: 11px;
+  margin-bottom: 3px;
 }
 
 .info-item strong {
-  color: var(--cyan);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 /* SKILLS */
@@ -435,85 +355,130 @@ header {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 40px;
+  gap: 18px;
+  margin-top: 35px;
 }
 
 .skill-card {
-  padding: 28px;
+  padding: 25px;
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  background: var(--card);
-  transition: .4s;
+  border-radius: 16px;
+  transition: transform .35s, border-color .35s;
 }
 
 .skill-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--cyan);
-  box-shadow: 0 0 30px #168cff22;
+  transform: translateY(-7px);
+  border-color: rgba(167,191,220,.4);
 }
 
 .skill-icon {
-  font-size: 30px;
-  margin-bottom: 20px;
+  font-size: 25px;
+  margin-bottom: 15px;
 }
 
 .skill-card h3 {
-  font-size: 17px;
-  margin-bottom: 12px;
+  font-size: 16px;
+  margin-bottom: 8px;
 }
 
 .skill-card p {
   color: var(--muted);
-  font-size: 12px;
-  line-height: 1.8;
+  font-size: 13px;
 }
 
-/* SCROLL REVEAL */
+/* PROJECTS */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 35px;
+}
+
+.project-card {
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  transition: transform .35s, box-shadow .35s;
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow);
+}
+
+.project-tag {
+  display: inline-block;
+  color: var(--accent-light);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.project-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--accent-light);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* CONTACT */
+
+.contact-card {
+  padding: 45px;
+  text-align: center;
+  background: linear-gradient(145deg, var(--surface), var(--card));
+  border: 1px solid var(--border);
+  border-radius: 22px;
+}
+
+.contact-card p {
+  color: var(--muted);
+  max-width: 520px;
+  margin: 12px auto 25px;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* SCROLL ANIMATION */
 
 .reveal {
   opacity: 0;
-  transform: translateY(45px);
+  transform: translateY(28px);
   transition: opacity .8s ease, transform .8s ease;
 }
 
-.reveal.active {
+.reveal.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* ANIMATIONS */
-
-@keyframes pulse {
-  from {
-    opacity: .6;
-    transform: scale(.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes loading {
-  from {
-    transform: translateX(-120%);
-  }
-  to {
-    transform: translateX(250%);
-  }
-}
-
-@keyframes rotate {
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(35px);
+    transform: translateY(25px);
   }
   to {
     opacity: 1;
@@ -521,47 +486,46 @@ header {
   }
 }
 
-/* MOBILE */
+/* LIGHT MODE */
 
-@media (max-width: 850px) {
-  .hero-decoration {
-    opacity: .25;
-    right: -100px;
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+body.light {
+  --bg: #f2f5f9;
+  --surface: #ffffff;
+  --card: #f8fafd;
+  --text: #172235;
+  --muted: #637187;
+  --accent: #607e9f;
+  --accent-light: #365d87;
+  --border: rgba(30,50,75,.12);
+  --shadow: 0 18px 45px rgba(30,50,75,.09);
 }
 
-@media (max-width: 600px) {
-  header {
-    padding: 17px 6%;
+body.light header {
+  background: rgba(242,245,249,.85);
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    width: 100%;
+    padding: 25px 6%;
+    flex-direction: column;
+    gap: 20px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links.open {
+    display: flex;
   }
 
   .menu-toggle {
     display: block;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 75px;
-    left: 5%;
-    width: 90%;
-    display: none;
-    flex-direction: column;
-    padding: 25px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: #080d20;
-  }
-
-  .nav-links.show {
-    display: flex;
   }
 
   .hero h1 {
@@ -569,216 +533,205 @@ header {
   }
 
   .hero-description {
-    font-size: 14px;
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-info {
-    grid-template-columns: 1fr;
+    font-size: 15px;
   }
 
   section {
-    padding: 80px 0;
+    padding: 75px 0;
   }
-    }
+
+  .about-grid,
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-grid {
+    gap: 25px;
+  }
+
+  .contact-card {
+    padding: 30px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
 </style>
 </head>
-
 <body>
 
-<!-- LOADING SCREEN -->
-<div class="loader" id="loader">
-  <div class="loader-content">
-    <div class="loader-logo">BEHRUZ</div>
-    <div class="loader-line"></div>
-    <div class="loader-text">SYSTEM INITIALIZING</div>
-  </div>
+<div class="background">
+  <div class="glow one"></div>
+  <div class="glow two"></div>
 </div>
 
-<div class="cursor-glow" id="cursorGlow"></div>
+<!-- NAVBAR -->
 
-<!-- NAVIGATION -->
 <header>
   <nav class="navbar">
-    <a href="#home" class="logo">BEH<span>RUZ.</span></a>
-
-    <button class="menu-toggle" id="menuToggle">
-      ☰
-    </button>
+    <a href="#home" class="logo">BEHRUZ<span>.</span></a>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="#home">BOSH SAHIFA</a></li>
-      <li><a href="#about">MEN HAQIMDA</a></li>
-      <li><a href="#skills">QIZIQISHLAR</a></li>
-      <li><a href="#projects">LOYIHALAR</a></li>
-      <li><a href="#contact">ALOQA</a></li>
+      <li><a href="#home">Bosh sahifa</a></li>
+      <li><a href="#about">Men haqimda</a></li>
+      <li><a href="#skills">Ko‘nikmalar</a></li>
+      <li><a href="#projects">Loyihalar</a></li>
+      <li><a href="#contact">Aloqa</a></li>
     </ul>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Rang rejimini almashtirish">☼</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menyuni ochish">☰</button>
+    </div>
   </nav>
 </header>
 
 <main>
 
 <!-- HERO -->
-<section class="hero container" id="home">
 
-  <div class="hero-content">
-    <div class="hero-tag">
-      ● SYSTEM ONLINE — WELCOME
-    </div>
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
 
-    <h1>
-      SALOM, MEN
-      <span>BEHRUZ.</span>
-    </h1>
+      <div class="eyebrow">
+        <span class="status-dot"></span>
+        Technology enthusiast
+      </div>
 
-    <p class="hero-description">
-      Texnologiya, kompyuter tizimlari va zamonaviy
-      dasturlash olamiga qiziquvchi yosh izlanuvchiman.
-      Men uchun har bir yangi bilim — yangi imkoniyat.
-    </p>
+      <h1>Salom, men <span>Behruz.</span></h1>
 
-    <div class="hero-buttons">
-      <a href="#about" class="btn btn-primary">
-        MEN HAQIMDA →
-      </a>
+      <p class="hero-description">
+        Texnologiya, dasturlash va kiberxavfsizlikka qiziquvchi
+        yosh izlanuvchiman. Har kuni yangi bilim va tajriba
+        orttirishga intilaman.
+      </p>
 
-      <a href="#projects" class="btn btn-outline">
-        LOYIHALARIM
-      </a>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">Loyihalarim ↗</a>
+        <a href="#about" class="btn btn-secondary">Men haqimda</a>
+      </div>
+
     </div>
   </div>
-
-  <div class="hero-decoration">
-    <div class="orbit-dot"></div>
-  </div>
-
 </section>
 
 <!-- ABOUT -->
+
 <section id="about">
-  <div class="container">
-
-    <div class="section-label reveal">
-      01 / ABOUT ME
-    </div>
-
-    <h2 class="section-title reveal">
-      MEN <span>HAQIMDA</span>
-    </h2>
+  <div class="container reveal">
 
     <div class="about-grid">
 
-      <div class="about-card reveal">
-        <p>
-          Men Behruzman. Texnologiyalar, kompyuter
-          arxitekturasi, dasturlash va kiberxavfsizlik
-          sohalariga qiziqaman.
-          <br><br>
-          Hozirda bilimlarimni oshirish, yangi
-          texnologiyalarni o‘rganish va o‘z ustimda
-          ishlash bilan shug‘ullanaman.
-          <br><br>
-          Maqsadim — kelajakda kuchli mutaxassis
-          bo‘lish va foydali loyihalar yaratish.
-        </p>
+      <div>
+        <div class="section-label">01 / ABOUT</div>
+        <h2 class="section-title">Men haqimda</h2>
+
+        <div class="about-card">
+          <h3>Doimiy rivojlanish.</h3>
+
+          <p>
+            Men texnologiyalar olamiga qiziqaman.
+            Ayniqsa, kompyuter tizimlari, dasturlash
+            va kiberxavfsizlik yo‘nalishlarini o‘rganishni
+            maqsad qilganman.
+          </p>
+
+          <p>
+            Hozir bilimlarimni mustahkamlash,
+            amaliy loyihalar yaratish va kelajakdagi
+            kasbim uchun tayyorgarlik ko‘rish bilan bandman.
+          </p>
+        </div>
       </div>
 
-      <div class="about-info reveal">
+      <div class="info-list">
 
         <div class="info-item">
-          <small>ISM</small>
-          <strong>BEHRUZ</strong>
+          <small>ISMI</small>
+          <strong>Behruz</strong>
         </div>
 
         <div class="info-item">
           <small>YO‘NALISH</small>
-          <strong>TECHNOLOGY</strong>
+          <strong>Cybersecurity</strong>
         </div>
 
         <div class="info-item">
-          <small>QIZIQISH</small>
-          <strong>CYBERSECURITY</strong>
+          <small>QIZIQISHLAR</small>
+          <strong>Technology / IT / Security</strong>
         </div>
 
         <div class="info-item">
           <small>MAQSAD</small>
-          <strong>DEVELOPER</strong>
+          <strong>Cyber Defense Specialist</strong>
         </div>
 
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- SKILLS -->
+
 <section id="skills">
-  <div class="container">
+  <div class="container reveal">
 
-    <div class="section-label reveal">
-      02 / INTERESTS
-    </div>
+    <div class="section-label">02 / SKILLS</div>
+    <h2 class="section-title">Men o‘rganayotgan sohalar</h2>
 
-    <h2 class="section-title reveal">
-      MENING <span>QIZIQISHLARIM</span>
-    </h2>
+    <p class="section-description">
+      Hozirgi asosiy e’tiborimni quyidagi yo‘nalishlarga qaratganman.
+    </p>
 
     <div class="skills-grid">
 
-      <div class="skill-card reveal">
-        <div class="skill-icon">💻</div>
-        <h3>Computer Systems</h3>
-        <p>
-          Kompyuter qurilmalari, operatsion
-          tizimlar va texnologiyalar.
-        </p>
+      <div class="skill-card">
+        <div class="skill-icon">⌘</div>
+        <h3>Computer Science</h3>
+        <p>Kompyuter tizimlari va texnologiyalar asoslarini o‘rganish.</p>
       </div>
 
-      <div class="skill-card reveal">
-        <div class="skill-icon">🔐</div>
+      <div class="skill-card">
+        <div class="skill-icon">◈</div>
         <h3>Cybersecurity</h3>
-        <p>
-          Axborot xavfsizligi va tizimlarni
-          himoyalash asoslari.
-        </p>
+        <p>Axborot xavfsizligi va tizimlarni himoya qilish asoslari.</p>
       </div>
 
-      <div class="skill-card reveal">
-        <div class="skill-icon">🌐</div>
+      <div class="skill-card">
+        <div class="skill-icon">⌨</div>
         <h3>Web Development</h3>
-        <p>
-          HTML, CSS va JavaScript yordamida
-          veb-saytlar yaratish.
-        </p>
+        <p>HTML, CSS va JavaScript orqali veb-saytlar yaratish.</p>
       </div>
 
-      <div class="skill-card reveal">
-        <div class="skill-icon">🧠</div>
-        <h3>Psychology</h3>
-        <p>
-          Inson tafakkuri, ong va
-          psixologiyani o‘rganish.
-        </p>
+      <div class="skill-card">
+        <div class="skill-icon">▤</div>
+        <h3>Networking</h3>
+        <p>Internet, tarmoqlar va ularning ishlash tamoyillari.</p>
       </div>
 
-      <div class="skill-card reveal">
-        <div class="skill-icon">⚙️</div>
-        <h3>Technology</h3>
-        <p>
-          Yangi texnologiyalar va
-          zamonaviy innovatsiyalar.
-        </p>
+      <div class="skill-card">
+        <div class="skill-icon">◉</div>
+        <h3>Linux</h3>
+        <p>Linux operatsion tizimi bilan ishlashni o‘rganish.</p>
       </div>
 
-      <div class="skill-card reveal">
-        <div class="skill-icon">🎹</div>
-        <h3>Music</h3>
-        <p>
-          Pianino va musiqiy asarlarni
-          o‘rganish.
-        </p>
+      <div class="skill-card">
+        <div class="skill-icon">⌁</div>
+        <h3>Problem Solving</h3>
+        <p>Mantiqiy fikrlash va muammolarga yechim topish.</p>
       </div>
 
     </div>
@@ -786,44 +739,42 @@ header {
 </section>
 
 <!-- PROJECTS -->
+
 <section id="projects">
-  <div class="container">
+  <div class="container reveal">
 
-    <div class="section-label reveal">
-      03 / PROJECTS
-    </div>
+    <div class="section-label">03 / PROJECTS</div>
+    <h2 class="section-title">Mening loyihalarim</h2>
 
-    <h2 class="section-title reveal">
-      MENING <span>LOYIHALARIM</span>
-    </h2>
+    <p class="section-description">
+      O‘rganish jarayonida yaratayotgan loyihalarim.
+    </p>
 
-    <div class="skills-grid">
+    <div class="projects-grid">
 
-      <div class="skill-card reveal">
-        <div class="skill-icon">🌌</div>
-        <h3>Cyber Portfolio</h3>
+      <div class="project-card">
+        <span class="project-tag">WEB DEVELOPMENT</span>
+        <h3>Personal Portfolio</h3>
         <p>
-          Shaxsiy portfolio saytim.
-          HTML, CSS va JavaScript asosida.
+          Shaxsiy ma’lumotlarim, qiziqishlarim
+          va maqsadlarimni namoyish qiluvchi veb-sayt.
         </p>
+        <a class="project-link"
+           href="https://adot46541-star.github.io/mening-birinchi-saytim/"
+           target="_blank" rel="noopener noreferrer">
+          Saytni ko‘rish ↗
+        </a>
       </div>
 
-      <div class="skill-card reveal">
-        <div class="skill-icon">💡</div>
-        <h3>Future Projects</h3>
+      <div class="project-card">
+        <span class="project-tag">CYBERSECURITY</span>
+        <h3>My Learning Journey</h3>
         <p>
-          Kelajakda yaratiladigan yangi
-          texnologik loyihalar.
+          Kiberxavfsizlik, tarmoq texnologiyalari
+          va tizimlarni himoya qilish bo‘yicha
+          o‘quv yo‘nalishim.
         </p>
-      </div>
-
-      <div class="skill-card reveal">
-        <div class="skill-icon">🚀</div>
-        <h3>Learning Journey</h3>
-        <p>
-          Dasturlash va kiberxavfsizlik
-          bo‘yicha rivojlanish yo‘lim.
-        </p>
+        <span class="project-link">In progress ·</span>
       </div>
 
     </div>
@@ -831,27 +782,26 @@ header {
 </section>
 
 <!-- CONTACT -->
+
 <section id="contact">
-  <div class="container">
+  <div class="container reveal">
 
-    <div class="section-label reveal">
-      04 / CONTACT
-    </div>
+    <div class="contact-card">
+      <div class="section-label">04 / CONTACT</div>
 
-    <h2 class="section-title reveal">
-      MEN BILAN <span>BOG‘LANING</span>
-    </h2>
+      <h2 class="section-title">Aloqada bo‘lamiz.</h2>
 
-    <div class="about-card reveal">
       <p>
-        Yangi g‘oyalar, texnologiyalar va
-        qiziqarli loyihalar haqida suhbatlashishga
-        doim ochiqman.
-        <br><br>
-        <strong style="color:var(--cyan)">
-          BEHRUZ — FUTURE IN PROGRESS.
-        </strong>
+        Hamkorlik, texnologiya yoki IT bo‘yicha
+        fikr almashish uchun bog‘lanishingiz mumkin.
       </p>
+
+      <a href="https://github.com/adot46541-star"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn btn-primary">
+        GitHub profilim ↗
+      </a>
     </div>
 
   </div>
@@ -860,127 +810,96 @@ header {
 </main>
 
 <!-- FOOTER -->
-<footer style="
-  text-align:center;
-  padding:35px 15px;
-  border-top:1px solid #168cff33;
-  color:#8998b5;
-  font-size:12px;
-">
-  <p>© <span id="year"></span> BEHRUZ.</p>
-  <p style="margin-top:10px;color:#00e5ff">
-    DESIGNED WITH PASSION & TECHNOLOGY
-  </p>
+
+<footer>
+  <div class="container">
+    © 2026 Behruz. Barcha huquqlar himoyalangan.
+    <br>
+    Designed with purpose.
+  </div>
 </footer>
 
 <!-- JAVASCRIPT -->
+
 <script>
 
-// PAGE LOADER
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("loader")
-      .classList.add("hide");
-  }, 900);
-});
-
-// CURRENT YEAR
-document.getElementById("year").textContent =
-  new Date().getFullYear();
-
 // MOBILE MENU
-const menuToggle =
-  document.getElementById("menuToggle");
 
-const navLinks =
-  document.getElementById("navLinks");
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
 
 menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("show");
+  navLinks.classList.toggle("open");
+  menuToggle.textContent =
+    navLinks.classList.contains("open") ? "×" : "☰";
 });
 
-// CLOSE MENU AFTER CLICK
-document.querySelectorAll(".nav-links a")
-  .forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("show");
-    });
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuToggle.textContent = "☰";
   });
-
-// SCROLL REVEAL
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("active");
-      }
-    });
-  },
-  {
-    threshold: 0.15
-  }
-);
-
-document.querySelectorAll(".reveal")
-  .forEach(element => {
-    revealObserver.observe(element);
-  });
-
-// CURSOR GLOW
-const cursorGlow =
-  document.getElementById("cursorGlow");
-
-document.addEventListener("mousemove", (event) => {
-  cursorGlow.style.left = event.clientX + "px";
-  cursorGlow.style.top = event.clientY + "px";
 });
 
-// BUTTON HOVER EFFECT
-document.querySelectorAll(".btn")
-  .forEach(button => {
+// LIGHT / DARK MODE
 
-    button.addEventListener("mousemove", event => {
-      const rect = button.getBoundingClientRect();
+const themeToggle = document.getElementById("themeToggle");
 
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("light");
 
-      button.style.setProperty("--mouse-x", x + "px");
-      button.style.setProperty("--mouse-y", y + "px");
-    });
+  const isLight = document.body.classList.contains("light");
 
+  themeToggle.textContent = isLight ? "☾" : "☼";
+
+  localStorage.setItem("portfolio-theme", isLight ? "light" : "dark");
+});
+
+if (localStorage.getItem("portfolio-theme") === "light") {
+  document.body.classList.add("light");
+  themeToggle.textContent = "☾";
+}
+
+// SCROLL REVEAL ANIMATION
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.12
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+  revealObserver.observe(element);
+});
+
+// ACTIVE NAVIGATION
+
+const sections = document.querySelectorAll("main section");
+const navItems = document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 130;
+
+    if (window.scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
   });
 
-// SMOOTH NAVIGATION
-document.querySelectorAll('a[href^="#"]')
-  .forEach(anchor => {
-
-    anchor.addEventListener("click", function(event) {
-      const target = document.querySelector(
-        this.getAttribute("href")
-      );
-
-      if (target) {
-        event.preventDefault();
-
-        target.scrollIntoView({
-          behavior: "smooth"
-        });
-      }
-    });
-
+  navItems.forEach(link => {
+    link.classList.toggle(
+      "active",
+      link.getAttribute("href") === "#" + current
+    );
   });
-
-// CONSOLE MESSAGE
-console.log(
-  "%c BEHRUZ SYSTEM ONLINE ",
-  "background:#06152e;color:#00e5ff;font-size:20px;padding:12px;font-weight:bold;"
-);
-
-console.log(
-  "%c Welcome to my digital world.",
-  "color:#168cff;font-size:14px;"
-);
+});
 
 </script>
 
