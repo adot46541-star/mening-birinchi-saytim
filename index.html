@@ -6,7 +6,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Behruzning shaxsiy portfolio sayti">
 <title>Behruz | Portfolio</title>
-<style>
+<style> /* Sahifa ochilish animatsiyasi */
+body {
+    animation: pageLoad 0.8s ease;
+}
+
+@keyframes pageLoad {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Elementlarning paydo bo‘lishi */
+.hero, .about, .skills, .projects, .contact {
+    animation: fadeUp 0.9s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Kartochkalar */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 140, 255, 0.25);
+}
+
+/* Tugmalar */
+button, .btn, a {
+    transition: all 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    transform: scale(1.05);
+}
+
+/* Harakatni kamaytirishni tanlaganlar uchun */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
 *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
 body{background:#070b14;color:#f5f8ff;font-family:Arial,sans-serif;line-height:1.6}
 a{text-decoration:none;color:inherit}
